@@ -1,6 +1,7 @@
 import NavBar from "./NavBar"
 import ListaFilmes from "./ListaFilmes"
 import SessaoDaTarde from "./SessaoDaTarde";
+import Assentos from "./Assentos"
 
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
@@ -14,6 +15,7 @@ export default function App(){
             <Routes>
                 <Route path="/" element={<ListaFilmes/>}/>
                 <Route path="/sessoes/:sessaoId" element={<SessaoDaTarde/>}/>
+                <Route path="/assentos/:idSessao" element={<Assentos />}/>
             </Routes>
         </BrowserRouter>
     )
