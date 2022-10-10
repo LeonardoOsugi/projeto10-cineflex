@@ -26,7 +26,7 @@ export default function Lugares({sea, selecionado, setSelecionado, ingresso, set
     }
     return(
         <Reservado cor={sea.isAvailable === false?"#F7C52B":(selecionado.includes(sea.id)?"#0E7D71":"#C3CFD9")}>
-            <button onClick={() => reservar()}>{sea.name}</button>
+            <button data-identifier="seat" onClick={() => reservar()}>{sea.name}</button>
         </Reservado>
     )
 }

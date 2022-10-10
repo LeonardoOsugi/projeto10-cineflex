@@ -6,7 +6,7 @@ export default function Horario({s}){
         
             <HorarioHonorario>
                 <Link to={`/assentos/${s.id}`}>
-                <button>{s.name}</button>
+                <button data-identifier="hour-minute-btn">{s.name}</button>
                 </Link>
             </HorarioHonorario>
     )
@@ -22,7 +22,7 @@ const HorarioHonorario = styled.div`
         cursor: pointer;
         margin-top: 10px;
         align-items: center;
-        justify-content: center;
+        /* justify-content: center; */
         width: 83px;
         /* height: 43px; */
         background-color: #E8833A;

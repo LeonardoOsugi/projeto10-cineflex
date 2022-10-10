@@ -3,7 +3,7 @@ import styled from "styled-components";
 export default function Bilhetes({assento}){
     return(
         <SentaODedo>
-            <p>Assento  {assento}</p>
+            <p data-identifier="seat-infos-reserve-finished">Assento  {assento}</p>
         </SentaODedo>
     )
 }

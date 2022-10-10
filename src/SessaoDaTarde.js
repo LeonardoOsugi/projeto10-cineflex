@@ -43,9 +43,9 @@ export default function SessaoDaTarde(){
             </DiaHorario>
             <PosterFilme>
                 <Poster>
-                    <img src={sess.posterURL} /> 
+                    <img data-identifier="movie-img-preview" src={sess.posterURL} /> 
                 </Poster>
-                <h1>{sess.title}</h1>
+                <h1 data-identifier="movie-and-session-infos-preview">{sess.title}</h1>
            </PosterFilme>
             
         </>

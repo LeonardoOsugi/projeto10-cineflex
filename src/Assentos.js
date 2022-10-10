@@ -83,15 +83,15 @@ export default function Assentos({setNomeFilme, setAdventureTime, setData, ingre
             </Botoes>
             <BotoesExemplar>
                 <BotoesExemplar1>
-                    <button></button>
+                    <button data-identifier="seat-selected-subtitle"></button>
                     <p>Selecionado</p>
                 </BotoesExemplar1>
                 <BotoesExemplar2>
-                    <button></button>
+                    <button data-identifier="seat-available-subtitle"></button>
                     <p>Disponível</p>
                 </BotoesExemplar2>
                 <BotoesExemplar3>
-                    <button></button>
+                    <button data-identifier="seat-unavailable-subtitle"></button>
                     <p>Indisponível</p>
                 </BotoesExemplar3>
             </BotoesExemplar>
@@ -100,18 +100,18 @@ export default function Assentos({setNomeFilme, setAdventureTime, setData, ingre
                 <form  onSubmit={addInfo}>
                     <InputNome>
                         <label htmlFor="name">Nome do comprador:</label>
-                        <input  id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)}placeholder="Digite seu nome..."
+                        <input data-identifier="buyer-name-input"  id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)}placeholder="Digite seu nome..."
                         required
                          />
                     </InputNome>
                     <InputCpf>
                             <label htmlFor="cpf">CPF do comprador:</label>
-                            <input id="cpf" name="cpf" type="text" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF(OBS: XXX.XXX.XXX-XX)" maxLength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                            <input data-identifier="buyer-cpf-input" id="cpf" name="cpf" type="text" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF(OBS: XXX.XXX.XXX-XX)" maxLength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
                             required
                             />
                     </InputCpf>
                     <BotaoSucess>
-                        <button type="submit">Reservar Assento(s)</button>
+                        <button data-identifier="reservation-btn" type="submit">Reservar Assento(s)</button>
                     </BotaoSucess>
                 </form>
             </InputBotao>
@@ -120,8 +120,7 @@ export default function Assentos({setNomeFilme, setAdventureTime, setData, ingre
                     <img src={ass.posterURL}/>
                 </Poster>
                 <Info>
-                    <h1>{ass.title}</h1>
-                    <h1>{day.weekday}-{day.date}</h1>
+                    <h1 data-identifier="movie-and-session-infos-preview">{ass.title}<br/>{day.weekday}-{day.date}</h1>
                 </Info>
             </Rodape>
         </>

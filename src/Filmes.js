@@ -6,7 +6,7 @@ export default function Filmes({ lst }) {
         <GoodFatherPoster>
             <Link to={`/sessoes/${lst.id}`}>
                 <Poster>
-                    <img src={lst.posterURL} />
+                    <img data-identifier="movie-outdoor" src={lst.posterURL} />
                 </Poster>
             </Link>
         </GoodFatherPoster>

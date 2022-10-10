@@ -12,7 +12,7 @@ export default function Finalmente({nomeFilme, adventureTime, data, ingresso, no
             </Title4>
             <FilmeSess>
                 <h1><strong>Filme e sessão</strong></h1>
-                <p>{nomeFilme}<br/>{data}  {adventureTime}</p>
+                <p data-identifier="movie-session-infos-reserve-finished">{nomeFilme}<br/>{data}  {adventureTime}</p>
             </FilmeSess>
             <Ingressos>
                 <h1><strong>Ingressos</strong></h1>
@@ -20,11 +20,11 @@ export default function Finalmente({nomeFilme, adventureTime, data, ingresso, no
             </Ingressos>
             <Comprador>
                 <h1><strong>Comprador</strong></h1>
-                <p>Nome: {nome}<br/>CPF: {dados}</p>
+                <p data-identifier="buyer-infos-reserve-finished">Nome: {nome}<br/>CPF: {dados}</p>
             </Comprador>
             <Back>
                 <Link to="/">
-                    <button>Voltar para a Home</button>
+                    <button data-identifier="back-to-home-btn">Voltar para a Home</button>
                 </Link>
             </Back>
         </>

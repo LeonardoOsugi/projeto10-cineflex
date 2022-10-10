@@ -8,8 +8,10 @@ export default function  Sessao({d}){
     <>
     <DiaData>
         <Coluna>
-            <h1>{d.weekday}-{d.date}</h1>
-            {showtimes.map((s) => <Horario key={s.id} s={s} />)}
+            <h1 data-identifier="session-date">{d.weekday}-{d.date}</h1>
+            <Ladinho>
+                {showtimes.map((s) => <Horario key={s.id} s={s} />)}
+            </Ladinho>
         </Coluna>
     </DiaData>
     </>
@@ -33,4 +35,8 @@ const DiaData = styled.div`
 const Coluna = styled.div`
       display: flex;
       flex-direction: column;
+`;
+
+const Ladinho = styled.div`
+      flex-direction: row;
 `;
