@@ -5,7 +5,7 @@ import { Navigate, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-export default function Assentos(){
+export default function Assentos({setNomeFilme, setAdventureTime, setData, ingresso, setIngresso, setNome, setDados}){
 
     const [day, setDay] = useState({});
     const [ass, setAss] = useState({});
@@ -15,16 +15,19 @@ export default function Assentos(){
     const [name, setName] = useState("");
     const [cpf, setCpf] = useState("");
     const [selecionado, setSelecionado] = useState([]);
+    const [hora, setHora] = useState([]);
+
 
     const navegate = useNavigate();
-    // const [nomeFilme, setNomeFilme] = useState("");
-
     const {idSessao} = useParams();
+
+    
 
     useEffect(() => {
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
 
         promise.then((res) =>{
+            setHora(res.data);
             setDay(res.data.day);
             setAss(res.data.movie);
             setSeats(res.data.seats);
@@ -41,6 +44,7 @@ export default function Assentos(){
         )
     }
 
+    
 
     function addInfo(e){
         e.preventDefault();
@@ -52,6 +56,12 @@ export default function Assentos(){
             name: name,
             cpf: cpf
         }
+
+        setNomeFilme(ass.title);
+        setAdventureTime(hora.name);
+        setData(day.date);
+        setNome(name);
+        setDados(cpf);
 
         const promisseP = axios.post(URLPost, body);
 
@@ -69,7 +79,7 @@ export default function Assentos(){
                 <h1>Selecione o(s) assento(s)</h1>
             </Title2>
             <Botoes>
-            {seats.map((sea) => <Lugares key={sea.id} selecionado={selecionado} setSelecionado={setSelecionado} sea={sea} />)}
+            {seats.map((sea) => <Lugares key={sea.id} selecionado={selecionado} setSelecionado={setSelecionado} sea={sea} ingresso={ingresso} setIngresso={setIngresso}/>)}
             </Botoes>
             <BotoesExemplar>
                 <BotoesExemplar1>
@@ -87,18 +97,18 @@ export default function Assentos(){
             </BotoesExemplar>
             
             <InputBotao>
-                <form onSubmit={addInfo}>
+                <form  onSubmit={addInfo}>
                     <InputNome>
                         <label htmlFor="name">Nome do comprador:</label>
-                        <input  id="name" type="text" value={name} onChange={e => setName(e.target.value)}placeholder="Digite seu nome..."
+                        <input  id="name" name="name" type="text" value={name} onChange={e => setName(e.target.value)}placeholder="Digite seu nome..."
                         required
                          />
                     </InputNome>
                     <InputCpf>
-                        <label htmlFor="cpf">CPF do comprador:</label>
-                        <input id="cpf" type="text" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF..."
-                        required
-                        />
+                            <label htmlFor="cpf">CPF do comprador:</label>
+                            <input id="cpf" name="cpf" type="text" value={cpf} onChange={e => setCpf(e.target.value)} placeholder="Digite seu CPF(OBS: XXX.XXX.XXX-XX)" maxLength="14" pattern="\d{3}\.\d{3}\.\d{3}-\d{2}"
+                            required
+                            />
                     </InputCpf>
                     <BotaoSucess>
                         <button type="submit">Reservar Assento(s)</button>

@@ -1,16 +1,19 @@
 
 import styled from "styled-components";
 
-export default function Lugares({sea, selecionado, setSelecionado}){
+export default function Lugares({sea, selecionado, setSelecionado, ingresso, setIngresso}){
     
     function reservar(){
         let newSelecionado = [...selecionado];
+        let newIngresso = [...ingresso];
 
         if(sea.isAvailable === false){
             return alert("Esse assento não está disponível")
         }
         if(selecionado.includes(sea.id) === false){
             newSelecionado = [...selecionado,sea.id];
+            newIngresso = [...ingresso,sea.name];
+            setIngresso(newIngresso);
             setSelecionado(newSelecionado);
         }else{
             newSelecionado = newSelecionado.filter((e) =>{
