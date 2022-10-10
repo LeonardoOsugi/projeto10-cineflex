@@ -68,6 +68,7 @@ const Title1 = styled.div`
 const DiaHorario = styled.div`
      display: flex;
      flex-wrap: wrap;
+     margin-bottom: 150px;
      h1{
         font-family: 'Roboto';
         font-size: 24px;
@@ -75,6 +76,8 @@ const DiaHorario = styled.div`
 `;
 
 const PosterFilme = styled.div`
+      position: fixed;
+      bottom: 0;
       width: 100%;
       height: 117px;
       display: flex;

@@ -6,6 +6,8 @@ import { useEffect, useState } from "react";
 import axios from "axios";
 
 export default function Assentos(){
+
+    const [day, setDay] = useState({});
     const [ass, setAss] = useState({});
 
     const [seats, setSeats] = useState([]);
@@ -23,7 +25,8 @@ export default function Assentos(){
         const promise = axios.get(`https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${idSessao}/seats`);
 
         promise.then((res) =>{
-            setAss(res.data);
+            setDay(res.data.day);
+            setAss(res.data.movie);
             setSeats(res.data.seats);
         });
 
@@ -97,9 +100,20 @@ export default function Assentos(){
                         required
                         />
                     </InputCpf>
+                    <BotaoSucess>
                         <button type="submit">Reservar Assento(s)</button>
+                    </BotaoSucess>
                 </form>
             </InputBotao>
+            <Rodape>
+                <Poster>
+                    <img src={ass.posterURL}/>
+                </Poster>
+                <Info>
+                    <h1>{ass.title}</h1>
+                    <h1>{day.weekday}-{day.date}</h1>
+                </Info>
+            </Rodape>
         </>
     )
 }
@@ -168,7 +182,7 @@ const BotoesExemplar3 = styled.div`
      button{
         width:26px;
         height: 26px;
-        background-color:#FBE192;
+        background-color:#F7C52B;
         border-radius: 100%;
      }
      p{
@@ -181,6 +195,7 @@ const InputBotao = styled.div`
       margin-top: 20px;
       width: 327px;
       padding: 10px;
+      margin-bottom: 150px;
 `;
 
 const InputNome = styled.div`
@@ -199,5 +214,48 @@ const InputCpf = styled.div`
       flex-direction: column;
       input{
         height: 50px;
+      }
+`;
+
+const Rodape = styled.div`
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      height: 117px;
+      display: flex;
+      background-color: #9EADBA;
+      padding: 10px;
+      h1{
+        font-family: 'Roboto';
+        font-size: 26px;
+        margin-bottom: 10px;
+      }
+`;
+
+const Poster = styled.div`
+       width: 64px;
+       height: 89px;
+       padding:10px;
+       background-color: #ffffff;
+       img{
+        width: 48px;
+        height: 72px;
+       }
+`;
+
+const Info = styled.div`
+       flex-direction: column;
+`;
+
+const BotaoSucess = styled.div`
+      margin-top: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      button{
+        color: #ffffff;
+        background-color: #E8833A;
+        width: 225px;
+        height: 42px;
       }
 `;
