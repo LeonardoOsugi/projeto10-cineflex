@@ -3,11 +3,12 @@ import { Link } from "react-router-dom";
 
 export default function Horario({s}){
     return(
-        <Link to={`/assentos/${s.id}`}>
+        
             <HorarioHonorario>
+                <Link to={`/assentos/${s.id}`}>
                 <button>{s.name}</button>
+                </Link>
             </HorarioHonorario>
-        </Link>
     )
 } 
 
@@ -16,14 +17,16 @@ const HorarioHonorario = styled.div`
      font-family: 'Roboto';
      font-size: 18px;
      display: flex;
-     flex-direction: column-reverse;
+     /* flex-direction: col; */
      button{
+        cursor: pointer;
         margin-top: 10px;
         align-items: center;
         justify-content: center;
         width: 83px;
-        height: 43px;
+        /* height: 43px; */
         background-color: #E8833A;
+        color: #ffffff;
      }
      
 `

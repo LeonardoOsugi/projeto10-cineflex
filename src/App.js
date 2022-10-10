@@ -1,7 +1,8 @@
 import NavBar from "./NavBar"
 import ListaFilmes from "./ListaFilmes"
 import SessaoDaTarde from "./SessaoDaTarde";
-import Assentos from "./Assentos"
+import Assentos from "./Assentos";
+import Finalmente from "./Finalmente";
 
 
 import {BrowserRouter, Routes, Route} from "react-router-dom"
@@ -16,6 +17,7 @@ export default function App(){
                 <Route path="/" element={<ListaFilmes/>}/>
                 <Route path="/sessoes/:sessaoId" element={<SessaoDaTarde/>}/>
                 <Route path="/assentos/:idSessao" element={<Assentos />}/>
+                <Route path="/sucesso" element={<Finalmente/>}/>
             </Routes>
         </BrowserRouter>
     )

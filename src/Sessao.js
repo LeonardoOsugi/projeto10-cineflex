@@ -31,5 +31,6 @@ const DiaData = styled.div`
 `;
 
 const Coluna = styled.div`
+      display: flex;
       flex-direction: column;
 `;
